@@ -1,4 +1,4 @@
-import { Sidebar } from "lucide-react";
+import  Sidebar  from "../components/Sidebar.jsx";
 import { useContext } from "react";
 import {AppContext} from "../context/AppContext";
 import Menubar from "../components/Menubar";
@@ -12,6 +12,7 @@ const Dashboard = ({ children, activeMenu }) => {
       {user && (
         <div className="flex">
         <div className="max-[1000px]:hidden">
+          {/* side bar content */}
                 <Sidebar activeMenu={activeMenu} />
                 </div>
                 <div className="grow max-5">{children}</div>
