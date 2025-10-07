@@ -8,42 +8,41 @@ import axiosConfig from "../util/axiosConfig";
 import { API_ENDPOINTS} from "../util/apiEndpoints";
 import toast from "react-hot-toast";
 import Dashboard from "../components/Dashboard.jsx";
+import { addThousandsSeparator } from "../util/utol.js";
+import RecentTransactions from "../components/RecentTransactions.jsx";
+import Transactions from "../components/Transactions.jsx";
 
 
 
 const Home = () => {
-        useUser();
-  const navigate = useNavigate();
+    useUser();
 
-  const [dashboardData, setDashboardData] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+    const navigate = useNavigate();
+    const [dashboardData, setDashboardData] = useState(null);
+    const [loading, setLoading] = useState(false);
 
-const fetchDashboardData = async () => {
-
-        if(loading) return
+    const fetchDashboardData = async () => {
+        if (loading) return;
 
         setLoading(true);
 
-        try{
-                const response = await axiosConfig.get(API_ENDPOINTS.DASHBOARD_DATA);
-                if(response.data === 200){
-                        setDashboardData(response.data);
-                }
-        }catch(err){
-                console.error("Something went wrong whilw fetching dashboard data", err);
-                setError("Something went wrong while fetching dashboard data")
-                toast
-        }finally{
-                setLoading(false);
+        try {
+            const response = await axiosConfig.get(API_ENDPOINTS.DASHBOARD_DATA);
+            if (response.status === 200) {
+                setDashboardData(response.data);
+            }
+        }catch (error) {
+            console.error('Something went wrong while fetching dashboard data:', error);
+            toast.error('Something went wrong!');
+        } finally {
+            setLoading(false);
         }
-}
+    }
 
-        useEffect(() => {
-                fetchDashboardData();
-                return () => {};
-        }, []);
-
+    useEffect(() => {
+        fetchDashboardData();
+        return () => {};
+    }, []);
 
   return (
     <Dashboard activeMenu="home">
@@ -52,20 +51,20 @@ const fetchDashboardData = async () => {
           <InfoCard
             icon={<WalletCards />}
             lable="Total balance"
-            value={addTousandsSeparator(dashboardData?.totalBalance || 0)}
+            value={addThousandsSeparator(dashboardData?.totalBalance || 0)}
             color="bg-purple-800"
           />
 
           <InfoCard
             icon={<Wallet />}
             label="Total  Income"
-            value={addTousandsSeparator(dashboardData?.totalIncome || 0)}
+            value={addThousandsSeparator(dashboardData?.totalIncome || 0)}
             color="bg-green-800"
           />
           <InfoCard
             icon={<Wallet />}
             label="Total Expense"
-            value={addTousandsSeparator(dashboardData?.totalExpense || 0)}
+            value={addThousandsSeparator(dashboardData?.totalExpense || 0)}
             color="bg-red-800"
           />
         </div>

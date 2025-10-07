@@ -1,28 +1,24 @@
-import { createContext } from 'react';
-import { useState } from 'react';
+import {createContext, useState} from "react";
 
 export const AppContext = createContext();
 
+export const AppContextProvider = ({children}) => {
 
-export const AppContextProvider = ({ children }) => {
+    const [user, setUser] = useState(null);
 
-        const [user, setUser] = useState(null);
+    const clearUser = () => {
+        setUser(null);
+    }
 
-        const clearUser = () => {
-                setUser(null);
-                localStorage.removeItem('token');
-        }
+    const contextValue = {
+        user,
+        setUser,
+        clearUser
+    }
 
-
-        const contextValue = {
-                user,
-                setUser,
-                clearUser
-        }
-
-        return (
-                <AppContext.Provider value={contextValue}>
-                        {children}
-                </AppContext.Provider>
-        );
-};
+    return (
+        <AppContext.Provider value={contextValue}>
+            {children}
+        </AppContext.Provider>
+    )
+}
