@@ -1,5 +1,11 @@
+import Dashboard from "../components/Dashboard.jsx";
+import { useUser } from "../hooks/useUser.jsx";
+
+
 const Filter = () => {
-        return <div>Filter Page</div>;
+        useUser();
+
+        return <Dashboard>Filter Page</Dashboard>;
         };
 
 export default Filter;

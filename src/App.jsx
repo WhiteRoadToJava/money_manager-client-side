@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route} from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate} from "react-router-dom";
 import Home from "./pages/Home.jsx";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
@@ -8,12 +8,15 @@ import Expense from "./pages/Expense";
 import Filter from "./pages/Filter";
 import { Toaster } from "react-hot-toast";
 
+
 const App = () => {
   return (
   <> { /* it called a fragment */}
   <Toaster />
   <BrowserRouter>
     <Routes>
+      <Route path='/' element={<Root/>} />
+      
       <Route path="/dashboard" element={<Home />} />
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
@@ -23,9 +26,20 @@ const App = () => {
       <Route path="/filter" element={<Filter />} />
     </Routes>
   </BrowserRouter>
+
+
   </>
   )
 };
+
+const Root = () => {
+  const isAutenticated = !!localStorage.getItem("token");
+  return isAutenticated ? (
+    <Navigate to="/dashboard" />
+   ) : (
+    <Navigate to="/login" />
+   )
+}
 
 
 

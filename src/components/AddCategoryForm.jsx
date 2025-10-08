@@ -45,7 +45,7 @@ const AddCategoryForm = ({ onAddCategory, initialCategoryDate, isEditing }) => {
 
       <Input
         value={category.name}
-        onChange={({ target }) => handleSubmit("name", target.value)}
+        onChange={({ target }) => handleChange("name", target.value)}
         label={"Category Name"}
         placeholder="e.g., Freelance, Salary, Groceries"
         type="text"
