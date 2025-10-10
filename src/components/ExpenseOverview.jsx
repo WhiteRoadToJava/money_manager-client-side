@@ -1,7 +1,11 @@
 import { Plus } from "lucide-react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { prepareIncomeLineChartData } from "../util/utol.js";
+import CustomLineChart from "../components/CustomLineChart.jsx";
 
-const Expense = ({transactions, onExpenseIncome}) => {
+
+
+const ExpenseOverview = ({transactions, onExpenseIncome}) => {
         const [chartData, setChartData] = useState([]);
 
         useEffect(() => {
@@ -23,6 +27,12 @@ const Expense = ({transactions, onExpenseIncome}) => {
                                         <Plus size={16} className="text-lg" /> Add Expense
                                 </button>
                         </div>
+
+                        <div className="mt-10">
+                                <CustomLineChart data={chartData} />
+                        </div>
                 </div>
         )
         };
+
+        export default ExpenseOverview;

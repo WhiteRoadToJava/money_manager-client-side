@@ -7,6 +7,7 @@ import Income from "./pages/Income";
 import Expense from "./pages/Expense";
 import Filter from "./pages/Filter";
 import { Toaster } from "react-hot-toast";
+import TestComponent from "./pages/TestComponent";
 
 
 const App = () => {
@@ -24,6 +25,7 @@ const App = () => {
       <Route path="/income" element={<Income />} />
       <Route path="/expense" element={<Expense />} />
       <Route path="/filter" element={<Filter />} />
+      <Route path="/testcomponent" element={<TestComponent />} />
     </Routes>
   </BrowserRouter>
 
