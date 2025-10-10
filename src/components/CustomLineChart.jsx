@@ -1,4 +1,13 @@
-import { addThousandsSeparator } from "../util/utol";
+import { addThousandsSeparator } from "../util/util";
+import {
+  Area,
+  AreaChart,
+  CartesianGrid,
+  Tooltip,
+  XAxis,
+  YAxis,
+  ResponsiveContainer,
+} from "recharts";
 
 const CustomLineChart = ({ data }) => {
   const CustomTooltip = ({ active, payload, label }) => {
@@ -54,7 +63,36 @@ const CustomLineChart = ({ data }) => {
     return null;
   };
   return <div>
-        
+           <div className="bg-white">
+      <ResponsiveContainer width="100%" height={300}>
+        <AreaChart data={data}>
+          <defs>
+            <linearGradient id="expenseGradient" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="5%" stopColor="#875cf5" stopOpacity={0.4} />
+              <stop offset="95%" stopColor="#875cf5" stopOpacity={0} />
+            </linearGradient>
+          </defs>
+
+          <CartesianGrid stroke="none" />
+          <XAxis
+            dataKey="month"
+            tick={{ fontSize: 12, fill: "#555" }}
+            stroke="none"
+          />
+          <YAxis tick={{ fontSize: 12, fill: "#555" }} stroke="none" />
+          <Tooltip content={<CustomTooltip />} />
+
+          <Area
+            type="monotone"
+            dataKey="totalAmount"
+            stroke="#875cf5"
+            fill="url(#expenseGradient)"
+            strokeWidth={3}
+            dot={{ r: 3, fill: "#ab8df8" }}
+          />
+        </AreaChart>
+      </ResponsiveContainer>
+    </div>
   </div>;
 };
 

@@ -1,7 +1,7 @@
 import { UtensilsCrossed } from "lucide-react";
 
 import { Trash2, TrendingDown, TrendingUp } from "lucide-react";
-import { addThousandsSeparator } from "../util/utol";
+import { addThousandsSeparator } from "../util/util";
 
 const TransactionInfoCard = ({
   icon,

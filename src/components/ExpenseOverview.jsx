@@ -1,6 +1,6 @@
 import { Plus } from "lucide-react";
 import { useEffect, useState } from "react";
-import { prepareIncomeLineChartData } from "../util/utol.js";
+import { prepareIncomeLineChartData } from "../util/util.js";
 import CustomLineChart from "../components/CustomLineChart.jsx";
 
 

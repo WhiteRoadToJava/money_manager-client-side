@@ -8,7 +8,7 @@ import axiosConfig from "../util/axiosConfig";
 import { API_ENDPOINTS} from "../util/apiEndpoints";
 import toast from "react-hot-toast";
 import Dashboard from "../components/Dashboard.jsx";
-import { addThousandsSeparator } from "../util/utol.js";
+import { addThousandsSeparator } from "../util/util.js";
 import RecentTransactions from "../components/RecentTransactions.jsx";
 import Transactions from "../components/Transactions.jsx";
 
