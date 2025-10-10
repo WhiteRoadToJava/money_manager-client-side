@@ -19,4 +19,6 @@ If you are developing a production application, we recommend using TypeScript wi
 
 
 ## the libraries i need to install
-npm install axios react-router-dom lucide-react recharts emoji-picker-react
+npm install axios react-router-dom lucide-react recharts emoji-picker-react moment
+
+oment is mecessary for date and time.

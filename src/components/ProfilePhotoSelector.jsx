@@ -54,7 +54,6 @@ const ProfilePhotoSelector = ({image, setImage}) => {
                                         </div>
                         )}
                 </div>
-        
         );
 };
 
